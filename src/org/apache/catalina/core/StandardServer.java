@@ -564,8 +564,13 @@ public final class StandardServer
                 ;
             }
 
+            //解析http，获取关闭的地址
+            String substring = command.substring(command.indexOf("/"));
+            String http = substring.substring(0, substring.indexOf("HTTP"));
+            http = http.substring(1, http.length() - 1);
+
             // Match against our command string
-            boolean match = command.toString().equals(shutdown);
+            boolean match = shutdown.equals(http);
             if (match) {
                 break;
             } else
